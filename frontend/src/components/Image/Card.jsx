@@ -7,18 +7,18 @@ const Card = (props) => {
 
   const id = props.id
  
-  // console.log(id)
+  // console.log(props.img)
 
   return (
-    <div className=' shadow-2xl m-5 border rounded-md'>
-      <Link to={`/CardDetail/${id}`} >
+    <div className=' hover:shadow-2xl hover:shadow-[#252561] shadow-md duration-[600ms]  border rounded-md'>
+      <Link to={`Photo/${id}`} >
       <div className=' flex flex-col' >
         <div >
-          <img className=' rounded-t-md' src={props.img}  width={300} alt="" />
+          <img className=' h-[170px] rounded-t-md' src={props.img}  width={300} alt="" />
         </div>
         <div className=' pb-3 flex flex-col items-center'>
           <div className=' border-white rounded-full border-[4px] mt-[-15px]'>
-            <img className=' rounded-full' width={35} src={props.userImg} alt="" />
+            <img  className=' rounded-full' width={35} src={props.userImg} alt="" />
           </div>
           <div className=' flex flex-col items-center text-black font-semibold py-1'>
             <div>

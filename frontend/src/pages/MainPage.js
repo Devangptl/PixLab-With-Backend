@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Category from "../components/Category"
-import CardList from "../components/CardList"
+import CardList from "../components/Image/CardList"
 
 const MainPage = () => {
   return (
