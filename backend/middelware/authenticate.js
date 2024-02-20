@@ -1,4 +1,4 @@
-import  Jwt  from "jsonwebtoken"
+import  jwt  from "jsonwebtoken"
 import { User } from "../model/user.model.js";
 
 export const authenticate = async(req, res, next) =>{
@@ -6,7 +6,7 @@ export const authenticate = async(req, res, next) =>{
         const token = req.headers.authorization
         // console.log(token)
 
-        const varifytoken = Jwt.verify(token , process.env.JWT_SECRET)
+        const varifytoken = jwt.verify(token , process.env.JWT_SECRET)
         // console.log(varifytoken);
 
         const rootUser = await User.findOne({_id : varifytoken._id})

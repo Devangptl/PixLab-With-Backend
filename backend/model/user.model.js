@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import bcrypt from "bcryptjs"
-import  Jwt  from "jsonwebtoken"
+import  jwt  from "jsonwebtoken"
 
 const userSchema = new mongoose.Schema({
     name: { 
@@ -48,7 +48,7 @@ userSchema.pre("save", async function(next){
 
 userSchema.methods.generateAuthtoken = async function(){
         try {
-            let token = Jwt.sign( { _id : this._id } ,  process.env.JWT_SECRET , {
+            let token = jwt.sign( { _id : this._id } ,  process.env.JWT_SECRET , {
                 expiresIn :  '1d'
             } )
 

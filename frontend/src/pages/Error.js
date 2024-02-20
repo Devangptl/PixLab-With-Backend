@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Error = () => {
   return (
-    <div className=' ml-[23%]'>
+    <div className=' ml-[23%] mt-24'>
             <div className="my-12 flex items-center justify-center px-2 md:my-24 md:px-0">
         <div className="lg:flex lg:items-center lg:space-x-10">
           <img
@@ -19,19 +20,18 @@ const Error = () => {
               Sorry, the page you are looking for doesn&apos;t exist or has been moved.
             </p>
             <div className="mt-6 flex items-center space-x-3">
-              <button
-                type="button"
+              <Link to={"/"}
+                
                 className="inline-flex items-center rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 
                 Go back
-              </button>
-              <button
-                type="button"
+              </Link>
+              <Link to={"/"}
                 className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 Contact us
-              </button>
+              </Link>
             </div>
           </div>
         </div>

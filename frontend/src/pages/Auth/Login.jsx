@@ -1,24 +1,18 @@
 
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = ({setLoginUser}) => {
+const Login = () => {
 
   const [email , setEmail] = useState()
   const [password , setPassword] = useState()
+  const [data , setData] = useState(false)
 
   const navigate = useNavigate()
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    // axios.post("http://localhost:8800/login", {email, password} )
-    // .then(result => {
-    //   console.log(result)
-    //   if(result.data === "Success"){
-    //     navigate('/')
-    //   }
-    //   })
-    // .catch(err => console.log("err" , err))
+    // (err => console.log("err" , err))
 
 
     const data = await fetch("http://localhost:8800/login",{
@@ -35,11 +29,14 @@ const Login = ({setLoginUser}) => {
 
       if(res.status === 201){
         localStorage.setItem("userdataToken" , res.result.token)
-
-        navigate("/")
-    }
+        
+         navigate("/profile")
+      }
 
 }
+
+
+
 
   return (
     <div className="ml-[35%] mt-20">
