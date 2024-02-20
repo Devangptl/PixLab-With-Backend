@@ -8,13 +8,11 @@ import CardList from "./components/Video/VidCardList";
 import VidDetail from "./pages/Vid/VidDetail";
 import Login from "./pages/Auth/Login";
 import { Signup } from "./pages/Auth/Signup";
-import {  useState } from "react";
+import Profile from "./pages/Profile";
+import Error from "./pages/Error";
 const App =() =>{
 
-  const [user,setLoginUser] = useState({
-  })
-
-  console.log(user)
+ 
 
   return (
     <div>
@@ -27,8 +25,10 @@ const App =() =>{
         <Route exact path="/Photo/:id" element={<CardDetail/>} />
         <Route  path="/videos/video/:id" element={<VidDetail/>} />
         <Route path="/videos" element={<CardList/>} />
-        <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup/>} />
+        <Route path="/profile" element={<Profile/>} />
+        <Route path="*" element={<Error/>} />
       </Routes>
       </div>
      

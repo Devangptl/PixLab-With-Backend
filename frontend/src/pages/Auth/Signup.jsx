@@ -12,12 +12,26 @@ export function Signup() {
 
   const navigate = useNavigate()
 
-  const handleSubmit =(e)=>{
+  const handleSubmit = async(e)=>{
       e.preventDefault()
-      axios.post("http://localhost:8800/signup", {name , email, password})
-      .then(result => {console.log(result) 
-        navigate('/login')})
-      .catch(err => console.log("err" , err))
+      
+      const data = await fetch("http://localhost:8800/signup",{
+        method : "POST",
+        headers :{
+          "Content-Type": "application/json"
+        },
+        body : JSON.stringify({ name , email , password })
+        })
+
+        const res = await data.json()
+
+        // console.log(res)
+
+        if(res.status === 201){
+          alert("User signup done")
+
+          navigate("/login")
+      }
 
   }
 

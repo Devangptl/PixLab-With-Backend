@@ -1,5 +1,5 @@
-import axios from "axios";
-import React, { useContext, useState } from "react";
+
+import React, {  useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = ({setLoginUser}) => {
@@ -9,16 +9,35 @@ const Login = ({setLoginUser}) => {
 
   const navigate = useNavigate()
 
-  const handleSubmit =(e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault()
-    axios.post("http://localhost:8800/login", {email, password} )
-    .then(result => {
-      console.log(result)
-      if(result.data === "Success"){
-        navigate('/')
-      }
+    // axios.post("http://localhost:8800/login", {email, password} )
+    // .then(result => {
+    //   console.log(result)
+    //   if(result.data === "Success"){
+    //     navigate('/')
+    //   }
+    //   })
+    // .catch(err => console.log("err" , err))
+
+
+    const data = await fetch("http://localhost:8800/login",{
+      method : "POST",
+      headers :{
+        "Content-Type": "application/json"
+      },
+      body : JSON.stringify({ email , password })
       })
-    .catch(err => console.log("err" , err))
+
+      const res = await data.json()
+
+      // console.log(res)
+
+      if(res.status === 201){
+        localStorage.setItem("userdataToken" , res.result.token)
+
+        navigate("/")
+    }
 
 }
 
